@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yyn.dao.ArticleInfoMapper">
+  <resultMap id="BaseResultMap" type="cn.yyn.model.entity.ArticleInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="is_top" jdbcType="BIT" property="isTop" />
+    <result column="traffic" jdbcType="INTEGER" property="traffic" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+    <result column="modified_by" jdbcType="TIMESTAMP" property="modifiedBy" />
+  </resultMap>
+  <sql id="BaseColumn">
+    id, title, summary, is_top, traffic, create_by, modified_by
+  </sql>
+
+  <insert id="insertArticleInfo">
+    insert into tbl_article_info (title, summary)
+    values (#{articleInfo.title}, #{articleInfo.summary})
+  </insert>
+
+  <select id="selectArticleInfoById" resultMap="BaseResultMap">
+    select * from tbl_article_info
+    where id = #{id}
+  </select>
+
+  <update id="updateArticleInfoById">
+    update tbl_article_info
+    <set>
+      <if test="articleInfo != null and articleInfo.title != null">
+        title = #{articleInfo.title},
+      </if>
+      <if test="articleInfo != null and articleInfo.summary != null">
+        summary = #{articleInfo.summary},
+      </if>
+      <if test="articleInfo != null and articleInfo.modifiedBy != null">
+        modified_by = #{articleInfo.modifiedBy}
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+</mapper>

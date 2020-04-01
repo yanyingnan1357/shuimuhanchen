@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yyn.dao.SysViewMapper">
+  <resultMap id="BaseResultMap" type="cn.yyn.model.entity.SysView">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_by" jdbcType="TIMESTAMP" javaType="java.sql.Date" property="createBy" />
+  </resultMap>
+
+  <sql id="BaseColumn">
+    id, ip, create_by
+  </sql>
+
+  <insert id="insertView">
+    insert into sys_view (ip) values (#{record.ip})
+  </insert>
+
+  <select id="selectViewBatch" resultMap="BaseResultMap">
+    select
+    <include refid="BaseColumn" />
+    from sys_view
+    where id > #{id}
+    limit #{limit}
+  </select>
+
+</mapper>

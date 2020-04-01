@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:redisson="http://redisson.org/schema/redisson"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                        http://redisson.org/schema/redisson http://redisson.org/schema/redisson/redisson.xsd">
+
+    <beans>
+        <redisson:client id="redissonClient" name="redissonClient" threads="0" netty-threads="2">
+            <redisson:single-server idle-connection-timeout="300000" connection-minimum-idle-size="0" subscription-connection-minimum-idle-size="0" connect-timeout="100"
+                                    timeout="100" retry-attempts="1" retry-interval="100" address="redis://127.0.0.1:6379" database="3" />
+        </redisson:client>
+    </beans>
+
+
+</beans>

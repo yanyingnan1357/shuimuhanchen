@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yyn.dao.SysLogMapper">
+  <resultMap id="BaseResultMap" type="cn.yyn.model.entity.SysLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="create_by" jdbcType="TIMESTAMP" javaType="java.util.Date" property="createBy" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="operate_url" jdbcType="VARCHAR" property="operateUrl" />
+    <result column="operate_by" jdbcType="VARCHAR" property="operateBy" />
+  </resultMap>
+
+  <sql id="BaseColumn">
+    id, ip, create_by, remark, operate_url, operate_by
+  </sql>
+
+  <insert id="insertLog">
+    insert into sys_log (ip, remark, operate_url, operate_by)
+    values (#{record.ip}, #{record.remark}, #{record.operateUrl}, #{record.operateBy})
+  </insert>
+
+  <select id="selectLogBatch" resultMap="BaseResultMap">
+    select
+    <include refid="BaseColumn" />
+    from sys_log
+    where id > #{id}
+    order by id
+    limit #{limit}
+  </select>
+</mapper>
