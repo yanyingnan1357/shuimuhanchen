@@ -31,3 +31,23 @@ public class defaultConsumer {
         }
     }
 }
+
+//使用@KafkaListener这个注解并不局限于这个监听容器是单条数据消费还是批量消费，
+//区分单数据还是多数据消费只需要配置一下注解的containerFactory属性即可，
+//先看下这个监听方法都能接收写什么参数：
+
+//    public void listen1(String data)
+//
+//    public void listen2(ConsumerRecord<K,V> data)
+//
+//    public void listen3(ConsumerRecord<K,V> data, Acknowledgment acknowledgment)
+//
+//    public void listen4(ConsumerRecord<K,V> data, Acknowledgment acknowledgment, Consumer<K,V> consumer)
+//
+//    public void listen5(List<String> data)
+//
+//    public void listen6(List<ConsumerRecord<K,V>> data)
+//
+//    public void listen7(List<ConsumerRecord<K,V>> data, Acknowledgment acknowledgment)
+//
+//    public void listen8(List<ConsumerRecord<K,V>> data, Acknowledgment acknowledgment, Consumer<K,V> consumer)
