@@ -28,6 +28,7 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * SysService实现类
@@ -107,6 +108,8 @@ public class SysServiceImpl implements SysService {
 
         esTest();
         send();
+
+        redissonClient.getBucket("yanyingnan").set("成功了", 10, TimeUnit.MINUTES);
 
         return sysViewMapper.selectViewBatch(id, limit);
     }

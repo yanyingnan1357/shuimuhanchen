@@ -5,9 +5,9 @@
                         http://redisson.org/schema/redisson http://redisson.org/schema/redisson/redisson.xsd">
 
     <beans>
-        <redisson:client id="redissonClient" name="redissonClient" threads="0" netty-threads="2">
+        <redisson:client id="redissonClient" name="redissonClient" codec-ref="kryoCodec" threads="0" netty-threads="2">
             <redisson:single-server idle-connection-timeout="300000" connection-minimum-idle-size="0" subscription-connection-minimum-idle-size="0" connect-timeout="100"
-                                    timeout="100" retry-attempts="1" retry-interval="100" address="redis://127.0.0.1:6379" database="3" />
+                                    timeout="100" retry-attempts="2" retry-interval="100" address="redis://127.0.0.1:6379" database="3" />
         </redisson:client>
     </beans>
 

@@ -2,6 +2,8 @@ package cn.yyn.web.config;
 
 import cn.yyn.common.CacheConstants;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.Codec;
+import org.redisson.codec.KryoCodec;
 import org.redisson.spring.cache.CacheConfig;
 import org.redisson.spring.cache.RedissonSpringCacheManager;
 import org.springframework.cache.CacheManager;
@@ -40,7 +42,7 @@ public class MyRedissionConfig {
     }
 
     @Bean("myKeyGenerator")
-    //自定义缓存key生成器，若要使用，再注解中加入keyGenerator参数=myKeyGenerator即可
+    //自定义缓存key生成器，若要使用，在spring-cache注解中加入keyGenerator参数=myKeyGenerator即可
     public KeyGenerator keyGenerator(){
         return new KeyGenerator(){
             @Override
@@ -49,6 +51,13 @@ public class MyRedissionConfig {
             }
         };
     }
+
+    //redisson.xml中就可以引入了
+    @Bean("kryoCodec")
+    public Codec kryoCodec() {
+        return new KryoCodec();
+    }
+
 
     private int hour(int hour) {
         return hour * 60 * 60 * 1000;
