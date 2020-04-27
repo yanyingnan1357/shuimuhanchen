@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -50,6 +51,9 @@ public class SysServiceImpl implements SysService {
 
     @Resource
     private RedissonClient redissonClient;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
 
     @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
