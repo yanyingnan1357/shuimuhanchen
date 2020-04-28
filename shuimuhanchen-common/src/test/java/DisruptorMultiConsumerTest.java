@@ -58,11 +58,14 @@ public class DisruptorMultiConsumerTest {
 				ringBuffer.publish(sequence);
 			}
 			//每10ms向disruptor中插入一个元素
-			Thread.sleep(10);
+//			Thread.sleep(10);
 		}
 
 		long time2 = System.currentTimeMillis();
 
 		System.out.println(time2 - time1);
+
+		Thread.sleep(1000);
+		disruptor.shutdown();
 	}
 }
