@@ -1,8 +1,10 @@
 package cn.yyn.dao;
 
 import cn.yyn.model.entity.ArticlePicture;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ArticlePictureMapper {
 
     int insertArticlePicture(@Param("articlePicture")ArticlePicture articlePicture);

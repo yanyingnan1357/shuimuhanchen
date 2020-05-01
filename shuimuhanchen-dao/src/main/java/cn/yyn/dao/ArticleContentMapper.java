@@ -1,8 +1,10 @@
 package cn.yyn.dao;
 
 import cn.yyn.model.entity.ArticleContent;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ArticleContentMapper {
 
     int insertArticleContent(@Param("articleContent")ArticleContent articleContent);

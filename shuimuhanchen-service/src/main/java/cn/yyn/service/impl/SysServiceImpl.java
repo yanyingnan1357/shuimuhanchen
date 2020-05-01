@@ -90,9 +90,9 @@ public class SysServiceImpl implements SysService {
      */
     @Override
     //只缓存批量查询的第一批数据
-    @Cacheable(cacheNames = CacheConstants.DEFAULT, key = "'getBatchLog-' + #id + '-' + #limit", condition = "#id == 0", unless = "#result.size() == 0")
-    public List<SysLog> getBatchLog(Long id, Integer limit) {
-        return sysLogMapper.selectLogBatch(id, limit);
+    @Cacheable(cacheNames = CacheConstants.DEFAULT, key = "'getBatchLog-' + #remark + '-' + #limit", condition = "#remark == 0", unless = "#result.size() == 0")
+    public List<SysLog> getBatchLog(Long id, String remark, Integer limit) {
+        return sysLogMapper.selectLogBatchByRemark(id, remark, limit);
     }
 
     /**

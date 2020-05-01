@@ -1,4 +1,4 @@
-package cn.yyn.postCache.exception;
+package cn.yyn.exception;
 
 public class BackupCacheRedisException extends RuntimeException {
 

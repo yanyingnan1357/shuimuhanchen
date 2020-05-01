@@ -36,9 +36,10 @@ public class SysController {
     @GetMapping("/getLog")
     public List<SysLog> getAllLog() {
         List<SysLog> sysLogs = new ArrayList<>();
+        String remark = "/shuimuhanchen/";
         Long id = 0L;
         while (true) {
-            List<SysLog> batchLog = sysService.getBatchLog(id, batchNum);
+            List<SysLog> batchLog = sysService.getBatchLog(id, remark, batchNum);
             sysLogs.addAll(batchLog);
             int size = batchLog.size();
             if(CollectionUtils.isEmpty(batchLog) || size < batchNum){

@@ -1,8 +1,8 @@
 package cn.yyn.postCache.aop;
 
 import cn.yyn.common.ThreadPoolUtil;
-import cn.yyn.postCache.exception.BackupCacheKeyMissException;
-import cn.yyn.postCache.exception.BackupCacheRedisException;
+import cn.yyn.exception.BackupCacheKeyMissException;
+import cn.yyn.exception.BackupCacheRedisException;
 import cn.yyn.postCache.redisproxy.JedisProxy;
 import cn.yyn.postCache.serializer.NonExistRedisObject;
 import com.google.common.base.Joiner;

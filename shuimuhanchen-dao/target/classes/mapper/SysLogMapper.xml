@@ -14,7 +14,7 @@
     id, ip, create_by, remark, operate_url, operate_by
   </sql>
 
-  <insert id="insertLog">
+  <insert id="insertLog" parameterType="cn.yyn.model.entity.SysLog">
     insert into sys_log (ip, remark, operate_url, operate_by)
     values (#{record.ip}, #{record.remark}, #{record.operateUrl}, #{record.operateBy})
   </insert>
@@ -24,6 +24,15 @@
     <include refid="BaseColumn" />
     from sys_log
     where id > #{id}
+    order by id
+    limit #{limit}
+  </select>
+
+  <select id="selectLogBatchByRemark" resultMap="BaseResultMap">
+    select
+    <include refid="BaseColumn" />
+    from sys_log
+    where id > #{id} and remark = #{remark}
     order by id
     limit #{limit}
   </select>

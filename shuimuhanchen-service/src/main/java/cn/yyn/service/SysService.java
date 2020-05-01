@@ -18,7 +18,7 @@ public interface SysService {
     void addView(SysView sysView);
 
     //批量获取
-    List<SysLog> getBatchLog(Long id, Integer limit);
+    List<SysLog> getBatchLog(Long id, String remark, Integer limit);
 
     //批量获取
     List<SysView> getBatchView(Long id, Integer limit);

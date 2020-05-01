@@ -1,6 +1,6 @@
 package cn.yyn.postCache.serializer;
 
-import cn.yyn.postCache.exception.KryoCodecException;
+import cn.yyn.exception.KryoCodecException;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
