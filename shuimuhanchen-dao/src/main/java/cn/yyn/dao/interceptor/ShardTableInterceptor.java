@@ -2,6 +2,7 @@ package cn.yyn.dao.interceptor;
 
 import cn.yyn.common.RouterUtil;
 import cn.yyn.exception.RouterException;
+import cn.yyn.model.entity.SysLog;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -79,14 +80,21 @@ public class ShardTableInterceptor implements Interceptor {
     private String parseParam(Object parameterObject, String key) {
         Object fieldValue = null;
 
+        //todo：传对象参数怎么办？
         if (parameterObject instanceof Map) {
-            // 最外层显示传参数
+            //使用@param注解传递对象字段参数
             Map paramMap = (Map) parameterObject;
             if (paramMap.containsKey(key)){
                 fieldValue = paramMap.get(key);
             }
+            //使用@param注解传递对象参数
+            Object param1 = paramMap.get("param1");
+            if (param1 instanceof SysLog) {
+                JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(param1));
+                fieldValue = jsonObject.get(key);
+            }
         }else {
-            // 对象内部属性传参
+            //对象内部属性传参
             JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(parameterObject));
             if (jsonObject.containsKey(key)) {
                 fieldValue = jsonObject.get(key);
