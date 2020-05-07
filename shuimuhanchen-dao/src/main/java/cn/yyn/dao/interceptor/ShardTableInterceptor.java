@@ -14,6 +14,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.SystemMetaObject;
 
 import java.sql.Connection;
 import java.util.Collection;
@@ -32,7 +33,8 @@ public class ShardTableInterceptor implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, new DefaultReflectorFactory());
+        MetaObject metaStatementHandler = SystemMetaObject.forObject(statementHandler);
+//        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, new DefaultReflectorFactory());
         MappedStatement mappedStatement = (MappedStatement) metaStatementHandler.getValue("delegate.mappedStatement");
         BoundSql boundSql = (BoundSql) metaStatementHandler.getValue("delegate.boundSql");
         String sqlId = mappedStatement.getId();
@@ -80,7 +82,6 @@ public class ShardTableInterceptor implements Interceptor {
     private String parseParam(Object parameterObject, String key) {
         Object fieldValue = null;
 
-        //todo：传对象参数怎么办？
         if (parameterObject instanceof Map) {
             //使用@param注解传递对象字段参数
             Map paramMap = (Map) parameterObject;
