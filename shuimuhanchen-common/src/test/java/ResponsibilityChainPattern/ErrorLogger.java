@@ -1,4 +1,4 @@
-package cn.yyn.ResponsibilityChainPattern;
+package ResponsibilityChainPattern;
 
 public class ErrorLogger extends AbstractLogger {
 

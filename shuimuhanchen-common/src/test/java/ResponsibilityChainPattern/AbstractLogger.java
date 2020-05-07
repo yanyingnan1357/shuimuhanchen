@@ -1,4 +1,4 @@
-package cn.yyn.ResponsibilityChainPattern;
+package ResponsibilityChainPattern;
 
 public abstract class AbstractLogger {
     public static int INFO = 1;

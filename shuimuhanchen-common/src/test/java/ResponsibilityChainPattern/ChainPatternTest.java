@@ -1,6 +1,6 @@
-package cn.yyn.ResponsibilityChainPattern;
+package ResponsibilityChainPattern;
 
-public class ChainPatternDemo {
+public class ChainPatternTest {
 
     private static AbstractLogger getChainOfLoggers(){
 
