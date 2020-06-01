@@ -147,7 +147,7 @@ public abstract class HashUtil {
         return Hashing.murmur3_32().hashBytes(input).asInt();
     }
 
-public static int murmur32AsInt(String input) {
+    public static int murmur32AsInt(String input) {
         return Hashing.murmur3_32().hashString(input, Charsets.UTF_8).asInt();
         }
 
