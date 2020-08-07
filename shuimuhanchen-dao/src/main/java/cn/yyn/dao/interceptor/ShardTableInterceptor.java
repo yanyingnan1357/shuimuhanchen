@@ -12,7 +12,6 @@ import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
-import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
@@ -20,9 +19,6 @@ import java.sql.Connection;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Properties;
-
-import static org.apache.ibatis.reflection.SystemMetaObject.DEFAULT_OBJECT_FACTORY;
-import static org.apache.ibatis.reflection.SystemMetaObject.DEFAULT_OBJECT_WRAPPER_FACTORY;
 
 /**
  * 基于mybatis的插件拦截器
@@ -54,7 +50,7 @@ public class ShardTableInterceptor implements Interceptor {
 
         metaStatementHandler.setValue("delegate.boundSql.sql", newSql);
 
-        // 传递给下一个拦截器处理
+        // 拦截后完成执行
         return invocation.proceed();
     }
 
