@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class SpinLockTest {
 
-    //定义原子引用类，保证原子性，volatile保证可见性、有序性（不需要加volatile！）
+    //定义原子引用类，保证原子性，volatile保证可见性、有序性（不需要加volatile！？）
     private volatile AtomicReference<Thread> atomicReference = new AtomicReference<>();
 
     public void spinLock(){
