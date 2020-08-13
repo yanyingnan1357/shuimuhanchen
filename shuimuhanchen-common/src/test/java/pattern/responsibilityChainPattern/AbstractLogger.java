@@ -1,4 +1,4 @@
-package responsibilityChainPattern;
+package pattern.responsibilityChainPattern;
 
 public abstract class AbstractLogger {
     public static int INFO = 1;

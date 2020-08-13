@@ -1,4 +1,4 @@
-package strategyPattern;
+package pattern.strategyPattern;
 
 public class OperationSubtract implements Strategy {
 

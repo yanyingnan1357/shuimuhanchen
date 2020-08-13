@@ -1,4 +1,4 @@
-package responsibilityChainPattern;
+package pattern.responsibilityChainPattern;
 
 public class ChainPatternTest {
 

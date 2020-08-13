@@ -1,4 +1,4 @@
-package adapterPattern;
+package pattern.adapterPattern;
 
 public class MediaAdapter implements MediaPlayer {
 
