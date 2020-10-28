@@ -1,5 +1,9 @@
 package pattern.strategyPattern;
 
+import org.assertj.core.util.Lists;
+
+import java.util.List;
+
 public class StrategyContext {
 
     private Strategy strategy;
@@ -21,6 +25,15 @@ public class StrategyContext {
 
         context = new StrategyContext(new OperationMultiply());
         System.out.println("10 * 5 = " + context.executeStrategy(10, 5));
+
+        System.out.println("----------");
+
+        List<Strategy> strategyList = Lists.newArrayList(new OperationAdd(), new OperationSubtract(), new OperationMultiply());
+
+        for (Strategy strategy : strategyList) {
+            System.out.println("10/+/-/* 5 = " + strategy.doOperation(10, 5));
+        }
+
     }
 }
 

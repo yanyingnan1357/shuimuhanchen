@@ -18,7 +18,7 @@ public class SelectSort {
         for(int i=0; i<array.length; i++) {
             int min = i;
 
-            for(int j=i+1; j<array.length; j++) {//存在跳跃式移动，因此会导致此排序不稳定
+            for(int j=i+1; j<array.length; j++) {//存在跳跃式移动，因此会导致此排序不稳定，例如：3 4 5 3 1 直接选择排序后两个3前后位置互换了
                 if(array[j] < array[min]){
                     min = j;
                 }
