@@ -45,8 +45,10 @@ public class SemaphoreTest {
                     try {
                         semaphore.acquire();
                         System.out.println(Thread.currentThread().getName() + "抢到资源");
-                        TimeUnit.SECONDS.sleep(3);
+                        System.out.println();
+                        TimeUnit.SECONDS.sleep(10);
                         System.out.println(Thread.currentThread().getName() + "放开资源");
+                        System.out.println();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {
