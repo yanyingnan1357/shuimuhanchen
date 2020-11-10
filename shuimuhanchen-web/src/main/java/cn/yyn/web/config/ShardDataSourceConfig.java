@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan("cn.yyn.dao")
-public class ShardingDataSourceConfig {
+public class ShardDataSourceConfig {
 
     @Bean
-    public Interceptor shardTableInteceptor() {
+    public Interceptor shardTableInterceptor() {
         return new ShardTableInterceptor();
     }
 
