@@ -1,3 +1,5 @@
+package thread;
+
 public class SingletonTest {
 
     private SingletonTest(){}//私有构造器 不让其它类创建本类对象

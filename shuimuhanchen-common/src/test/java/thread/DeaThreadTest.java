@@ -1,3 +1,5 @@
+package thread;
+
 public class DeaThreadTest implements Runnable{
 
     //锁对象用final修饰表示对象必须被初始化，不能被修改；
