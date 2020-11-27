@@ -1,0 +1,72 @@
+package algorithm.tree;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+/**
+ * 层序遍历二叉树
+ *
+ */
+public class PrintTree1 {
+
+    private static List<List<Integer>> printTree(TreeNode root) {
+
+        List<List<Integer>> list = new ArrayList<>();
+        if(root == null) {
+            return list;
+        }
+        ArrayList<Integer> row = new ArrayList<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();//ArrayDeque LinkedList都是接口Queue的实现类
+        queue.add(root);
+        int num = 1;//记录当前行还有多少结点需要打印。
+        int nextNum = 0;//记录下一层的节点数。
+
+        while(!queue.isEmpty()){
+            if(queue.element().left!=null){
+                queue.add(queue.element().left);
+                nextNum++;//下一层加一
+            }
+            if(queue.element().right!=null){
+                queue.add(queue.element().right);
+                nextNum++;//下一层加一
+            }
+            row.add(queue.poll().val);
+            num--;//这一层减一
+            if(num == 0){
+                list.add(new ArrayList<>(row));
+                row.clear();
+                num = nextNum;//上下层记录交换
+                nextNum = 0;
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+
+        TreeNode root = new TreeNode(0);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        root.left = node1;
+        root.right = node2;
+        node1.left = node3;
+        node1.right = node4;
+        node2.left = node5;
+        node2.right = node6;
+
+        List<List<Integer>> lists = printTree(root);
+        for (List<Integer> list : lists) {
+            for (Integer i : list) {
+                System.out.print(i);
+            }
+        }
+
+    }
+
+}
