@@ -17,7 +17,7 @@ public class PrintTree1 {
         if(root == null) {
             return list;
         }
-        ArrayList<Integer> row = new ArrayList<>();
+        List<Integer> row = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();//ArrayDeque LinkedList都是接口Queue的实现类
         queue.add(root);
         int num = 1;//记录当前行还有多少结点需要打印。
