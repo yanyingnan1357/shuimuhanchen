@@ -52,11 +52,11 @@ public class MyRedissionConfig {
         };
     }
 
-    //redisson.xml中就可以引入了
-    @Bean("kryoCodec")
-    public Codec kryoCodec() {
-        return new KryoCodec();
-    }
+    //redisson.xml中引入了
+//    @Bean("kryoCodec")
+//    public Codec kryoCodec() {
+//        return new KryoCodec();
+//    }
 
 
     private int hour(int hour) {
