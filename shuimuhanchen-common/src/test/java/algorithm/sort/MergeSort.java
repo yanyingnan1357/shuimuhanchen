@@ -25,25 +25,31 @@ public class MergeSort {
         }
     }
 
-    private static void merge(int[] a, int left, int center, int right) {
-        int mid = center+1;
-        int index = left;//index为tmpA数组的临时下标
-        int tmp = left;//用于拷贝回原数组的时候用的临时下标
+    private static void merge(int[] a, int left, int mid, int right) {
+        int midRight = mid + 1;
         int[] tmpA = new int[a.length];
-        while(left<=center && mid<=right){
-            if(a[left]<a[mid])//< 不是 <= 所以稳定
+        int index = left;//index为tmpA数组的临时下标
+        int tmp = left;//需要拷贝回原数组，因此暂存a的left下标
+
+        while (left<= mid && right>=midRight) {
+            if (a[left] < a[midRight]) {//不是 <= 所以稳定
                 tmpA[index++] = a[left++];
-            else
-                tmpA[index++] = a[mid++];
+            } else {
+                tmpA[index++] = a[midRight++];
+            }
         }
-        while(left<=center)
+        while (left <= mid) {
             tmpA[index++] = a[left++];
-        while(mid<=right)
-            tmpA[index++] = a[mid++];
-        //拷贝回原数组
-        while(tmp<=right)
+        }
+        while (midRight <= right) {
+            tmpA[index++] = a[midRight++];
+        }
+        //排好序的位置覆盖回原数组
+        while (tmp <= right) {
             a[tmp] = tmpA[tmp++];
+        }
     }
+
 
     public static void main(String[] args){
         int[] array = {3, 2, 1, 4};

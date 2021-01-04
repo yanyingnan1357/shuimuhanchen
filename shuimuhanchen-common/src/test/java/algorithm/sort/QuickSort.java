@@ -16,24 +16,22 @@ public class QuickSort {
         subSort(a,0,a.length-1);
     }
 
-    private static void subSort(int[] a, int start, int end) {//使用了递归栈空间所以空间效率稍微差一点
+    private static void subSort(int[] a, int start, int end) {
 
-        if(start<end){//递归跳出条件
-            int i = start, j = end+1;
+        if(start < end) {//先写递归跳出条件
+            int i = start;
+            int j = end + 1;
 
-            while(true){//这个while循环 对应快排的一趟
-
-                while(i<end && a[++i]<a[start]);//a[start]为基数 i找比基数大的
-                while(j>start && a[--j]>a[start]);//a[start]为基数 j找比基数小的
-
+            while (true) {//第一趟快排
+                while (i < end && a[++i] < a[start]) {}//a[start]为基数
+                while (j > start && a[--j] > a[start]) {}//a[start]为基数
                 if(i<j) {
-                    swap(a,i,j);
-                }
-                else {
+                    swap(a, i, j);
+                } else {
                     break;
                 }
             }
-            swap(a,start,j);
+            swap(a, start, j);
             subSort(a, start, j-1);
             subSort(a, j+1, end);
         }
