@@ -3,7 +3,7 @@ package algorithm.sort;
 import java.util.Arrays;
 
 /**
- * 冒泡排序-最小的元素上浮
+ * 冒泡排序-小元素上浮
  * - 最小时间复杂度O(n)
  * - 平均时间复杂度O(n^2)
  * - 最大时间复杂度O(n^2)
@@ -11,22 +11,27 @@ import java.util.Arrays;
  * - 稳定
  */
 public class BubbleSort {
-    public static void sort(int[] array) {
-        if(array.length <=1) {
-            return;
-        }
-        for(int i=1; i<array.length; i++) {
-            int temp;
 
-            for(int j=i; j>0; j--) {
-                if(array[j] < array[j-1]) {//这里是> 不是>= 因此算法稳定
-                    temp = array[j];
-                    array[j] = array[j-1];
-                    array[j-1] = temp;
+    private static void sort(int[] arr) {
+        for (int i=0; i<arr.length-1; i++) {
+            for (int j=0; j<arr.length-1-i; j++) {
+                if(arr[j] > arr[j+1]) {
+                    swap(arr, j, j+1);
                 }
             }
         }
     }
+
+    private static void swap(int[] arr, int i, int j) {
+        if(i > arr.length-1 || j > arr.length-1 || i < 0 || j<0) {
+            return;
+        }
+        int tmp;
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+
     public static void main(String[] args){
         int[] array = {3, 2, 1, 4};
         sort(array);
