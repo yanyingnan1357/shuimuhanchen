@@ -39,7 +39,7 @@ public class ZhiPrintTree {
                     s2.add(node.left);
             }
 
-            if(s1.isEmpty()){//当s1空  就交换两个栈  经典所在。 本来要交替控制处理s1s1，利用交换 只需要每次都控制s1就好了
+            if(s1.isEmpty()){//当s1空  就交换两个栈  经典所在。 本来要交替控制处理s1s2，利用交换 只需要每次都控制s1就好了
                 Stack<TreeNode> s = s1;
                 s1 = s2;
                 s2 = s;

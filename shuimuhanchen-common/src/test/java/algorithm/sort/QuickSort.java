@@ -22,13 +22,11 @@ public class QuickSort {
             int i = start;
             int j = end + 1;
 
-            while (true) {//第一趟快排
+            while (i < j) {//第一趟快排
                 while (i < end && a[++i] < a[start]) {}//a[start]为基数
                 while (j > start && a[--j] > a[start]) {}//a[start]为基数
                 if(i<j) {
                     swap(a, i, j);
-                } else {
-                    break;
                 }
             }
             swap(a, start, j);
@@ -44,7 +42,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args){
-        int[] array = {3, 2, 1, 4};
+        int[] array = {3, 2, 1, 0};
         sort(array);
         System.out.println(Arrays.toString(array));
     }

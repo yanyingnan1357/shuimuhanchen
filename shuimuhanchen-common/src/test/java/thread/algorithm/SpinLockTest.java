@@ -1,4 +1,4 @@
-package thread;
+package thread.algorithm;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;

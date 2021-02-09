@@ -1,4 +1,4 @@
-package thread;
+package thread.algorithm;
 
 /**
  * 为什么会有虚假唤醒（如果用if判断之后进行wait()或者await()）：两个线程没问题，两个以上就有问题

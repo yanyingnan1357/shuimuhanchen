@@ -14,6 +14,7 @@ public class EntryNodeOfLoop {
         }
         //求出环的长度
         int len = loopLen(head);
+
         ListNode p = head;
         ListNode q = head;
         while (len > 0) {
@@ -28,7 +29,7 @@ public class EntryNodeOfLoop {
     }
 
     /**
-     * 求环的长度
+     * 求环的长度（快慢指针一定在环内相遇）
      */
     private static int loopLen(ListNode head) {
         //判断是否有环
@@ -54,7 +55,7 @@ public class EntryNodeOfLoop {
     }
 
     /**
-     * 判断链表是否有环
+     * 判断链表是否有环（快慢指针相遇就有环）
      */
     private static Boolean hasLoop(ListNode head) {
         ListNode p = head;

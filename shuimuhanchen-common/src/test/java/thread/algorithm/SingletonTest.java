@@ -1,4 +1,4 @@
-package thread;
+package thread.algorithm;
 
 public class SingletonTest {
 
@@ -9,7 +9,7 @@ public class SingletonTest {
     //因此加volatile禁止指令重排
     private static volatile SingletonTest uniqueInstance;
 
-    public static SingletonTest getingleton(){
+    public static SingletonTest getSingleton(){
         if(uniqueInstance == null){//第一次检查
             synchronized (SingletonTest.class){
                 if(uniqueInstance == null){//第二次检查

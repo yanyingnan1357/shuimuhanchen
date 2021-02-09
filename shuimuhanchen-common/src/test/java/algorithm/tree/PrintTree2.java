@@ -19,9 +19,9 @@ public class PrintTree2 {
         }
         Queue<TreeNode> queue = new ArrayDeque<>();//ArrayDeque LinkedList都是接口Queue的实现
         queue.add(root);
-        TreeNode node;
+//        TreeNode node;
         while(!queue.isEmpty()){
-            node = queue.poll();
+            TreeNode node = queue.poll();
             list.add(node.val);
             if(node.left!=null){
                 queue.add(node.left);

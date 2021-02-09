@@ -1,6 +1,6 @@
-package thread;
+package thread.algorithm;
 
-public class DeaThreadTest implements Runnable{
+public class DeaThreadTest implements Runnable {
 
     //锁对象用final修饰表示对象必须被初始化，不能被修改；
     //非final的对象可以被重新赋值，锁对象就不受管控了；
