@@ -45,7 +45,7 @@ public class ZhiPrintTree {
                 s2 = s;
                 flag = 1-flag;
                 list.add(new ArrayList<>(row));
-                row.clear();
+                row.clear();//记得清除
             }
         }
         return list;

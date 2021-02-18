@@ -44,6 +44,39 @@ public class PrintTree1 {
         return list;
     }
 
+    //用两个队列就不需要上面那样 记录当前行还有多少结点需要打印了
+    public static List<List<Integer>> printTree2 (TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        List<Integer> row = new ArrayList<>();
+
+        Queue<TreeNode> q1 = new ArrayDeque<>();
+        Queue<TreeNode> q2 = new ArrayDeque<>();
+        q1.add(root);
+
+        while(!q1.isEmpty()) {
+            TreeNode tmp = q1.poll();
+            row.add(tmp.val);
+            if (tmp.left != null) {
+                q2.add(tmp.left);
+            }
+            if (tmp.right != null) {
+                q2.add(tmp.right);
+            }
+
+            if (q1.isEmpty()) {
+                res.add(new ArrayList(row));
+                row.clear();//记得清除
+                Queue<TreeNode> q = q1;
+                q1 = q2;
+                q2 = q;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
         TreeNode root = new TreeNode(0);
@@ -66,7 +99,14 @@ public class PrintTree1 {
                 System.out.print(i);
             }
         }
-
+        System.out.println();
+        System.out.println();
+        List<List<Integer>> listz = printTree2(root);
+        for (List<Integer> list : listz) {
+            for (Integer i : list) {
+                System.out.print(i);
+            }
+        }
     }
 
 }
