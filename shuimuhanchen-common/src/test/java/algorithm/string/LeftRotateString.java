@@ -26,7 +26,6 @@ public class LeftRotateString {
         int j = end;
         while (i < j) {
             tmp = chars[i];
-            chars[i] = tmp;
             chars[i] = chars[j];
             chars[j] = tmp;
             i++;

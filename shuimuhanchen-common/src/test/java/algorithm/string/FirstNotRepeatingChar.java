@@ -2,6 +2,7 @@ package algorithm.string;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * 在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置,
@@ -9,7 +10,7 @@ import java.util.LinkedHashMap;
  */
 public class FirstNotRepeatingChar {
 
-    public static int firstNotRepeatingChar(String str) {
+    public static int firstNotRepeatPosition(String str) {
         if (str == null || str.length() == 0) {
             return -1;
         }
@@ -30,7 +31,30 @@ public class FirstNotRepeatingChar {
         return -1;
     }
 
+    public static char firstNoRepeatChar(String str) {
+        if (str == null || str.length() == 0) {
+            return ' ';
+        }
+
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for(int i=0; i<str.length(); i++) {
+            char tmp = str.charAt(i);
+            if (map.containsKey(tmp)) {
+                map.put(tmp, map.get(tmp) + 1);
+            } else {
+                map.put(tmp, 1);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return ' ';
+    }
+
     public static void main(String[] args) {
-        System.out.println(firstNotRepeatingChar("google"));
+        System.out.println(firstNotRepeatPosition("google"));
+        System.out.println(firstNoRepeatChar("google"));
     }
 }

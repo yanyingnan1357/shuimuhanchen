@@ -5,23 +5,26 @@ package algorithm.string;
  */
 public class IntStringSum {
 
-    private static String solve(String s, String t) {
+    private static String IntStringSum(String str1, String str2) {
 
-        StringBuilder result = new StringBuilder();
-        int i = s.length() - 1, j = t.length() - 1, carry = 0;
+        StringBuilder res = new StringBuilder();
 
-        while (i >= 0 || j >= 0 || carry != 0) {
-            int x = i < 0 ? 0 : s.charAt(i--) - '0';
-            int y = j < 0 ? 0 : t.charAt(j--) - '0';
-            int sum = x + y + carry;
-            result.append(sum % 10);//添加到字符串尾部
-            carry = sum / 10;
+        int i = str1.length() - 1;
+        int j = str2.length() - 1;
+        int cnt = 0;
+
+        while (i>=0 || j>=0 || cnt>0) {
+            int x = i < 0 ? 0 : str1.charAt(i--) - '0';
+            int y = j < 0 ? 0 : str2.charAt(j--) - '0';
+            int sum = x + y + cnt;
+            res.append(sum % 10);
+            cnt = sum / 10;
         }
 
-        return result.reverse().toString();//对字符串反转
+        return res.reverse().toString();
     }
 
     public static void main(String[] args) {
-        System.out.println(solve("123", "45"));
+        System.out.println(IntStringSum("123", "45"));
     }
 }
