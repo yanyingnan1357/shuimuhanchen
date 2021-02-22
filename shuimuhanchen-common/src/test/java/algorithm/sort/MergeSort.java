@@ -3,7 +3,7 @@ package algorithm.sort;
 import java.util.Arrays;
 
 /**
- * 归并排-归并思想是三个while循环，排序思想是递归。
+ * 归并排-归并核心是归并过程的4个while循环，排序思想是递归。
  * - 最小时间复杂度O(nlogn)
  * - 平均时间复杂度O(nlogn)
  * - 最大时间复杂度O(nlogn)
@@ -12,15 +12,11 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
-    public static void sort(int[] a){
-        sort(a,0,a.length-1);
-    }
-
-    private static void sort(int[] a, int left, int right) {
+    private static void mergeSort(int[] a, int left, int right) {
         if(left<right){
             int center = (left+right)/2;
-            sort(a,left,center);
-            sort(a,center+1,right);
+            mergeSort(a,left,center);
+            mergeSort(a,center+1,right);
             merge(a,left,center,right);
         }
     }
@@ -53,7 +49,7 @@ public class MergeSort {
 
     public static void main(String[] args){
         int[] array = {3, 2, 1, 4};
-        sort(array);
+        mergeSort(array,0,array.length-1);
         System.out.println(Arrays.toString(array));
     }
 }

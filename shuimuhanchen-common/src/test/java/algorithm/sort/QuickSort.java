@@ -12,26 +12,26 @@ import java.util.Arrays;
  */
 public class QuickSort {
 
-    public static void sort(int[] a){
-        subSort(a,0,a.length-1);
-    }
-
-    private static void subSort(int[] a, int start, int end) {
+    private static void quickSort(int[] a, int start, int end) {
 
         if(start < end) {//先写递归跳出条件
-            int i = start;
-            int j = end + 1;
+            int i = start + 1;
+            int j = end;
 
             while (i < j) {//第一趟快排
-                while (i < end && a[++i] < a[start]) {}//a[start]为基数
-                while (j > start && a[--j] > a[start]) {}//a[start]为基数
+                while (i < end && a[i] < a[start]) {
+                    i++;
+                }//a[start]为基数
+                while (j > start && a[j] > a[start]) {
+                    j--;
+                }//a[start]为基数
                 if(i<j) {
                     swap(a, i, j);
                 }
             }
             swap(a, start, j);
-            subSort(a, start, j-1);
-            subSort(a, j+1, end);
+            quickSort(a, start, j-1);
+            quickSort(a, j+1, end);
         }
     }
 
@@ -43,7 +43,7 @@ public class QuickSort {
 
     public static void main(String[] args){
         int[] array = {3, 2, 1, 0};
-        sort(array);
+        quickSort(array, 0, array.length-1);
         System.out.println(Arrays.toString(array));
     }
 }
