@@ -3,8 +3,11 @@ package algorithm.tree;
 public class TreeNode {
 
     int val;
-    TreeNode left = null;
-    TreeNode right = null;
+    TreeNode left;
+    TreeNode right;
+
+    //指向父节点的指针
+    TreeNode next;
 
     public TreeNode() {
 
