@@ -1,53 +1,45 @@
 package algorithm.tree;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 求二叉树中和为某一值的路径 根结点到叶子结点为一个路径
+ * 求二叉树中和为某一值的路径 根结点到叶子结点为一个路径 可能有负数呢
  */
 public class FindPath {
 
-    public static ArrayList<ArrayList<Integer>> findPath(TreeNode root,int target) {
-
-        ArrayList<ArrayList<Integer>> listResult = new ArrayList<>();
-
-        if(root==null || root.val>target)
-            return listResult;
-
-        ArrayList<Integer> list = new ArrayList<>();
-
-        findPath(root, target, listResult, list);
-
-        return listResult;
-
-    }
-
-    private static void findPath(TreeNode root, int target, ArrayList<ArrayList<Integer>> listResult, ArrayList<Integer> list) {
-
-        //如果当前结点为空 或者 当前结点值大于target 清空路径
-        if(root==null || root.val>target) {
-            //清空该路径
-            list.clear();
-        //如果当前结点值等于target && 是叶子节点  将该结点添加到list中 否则清除
-        } else if(root.val==target) {
-            if(root.left==null && root.right==null) {
-                list.add(root.val);
-                listResult.add(new ArrayList<>(list));
-            }
-        //如果当前结点值小于target，递归找他的左右子树
-        } else {
-            list.add(root.val);
-
-            //再拷贝一个list的用途在于，二叉树按照左右两个方向递归找寻剩余路径都要用到目前list中已存在的路径
-            ArrayList<Integer> list2 = new ArrayList<>(list);
-
-            target -= root.val;
-
-            findPath(root.left, target, listResult, list);
-            findPath(root.right, target, listResult, list2);
-
+    public static List<List<Integer>> findPath(TreeNode root, Integer target) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
         }
+        List<Integer> tmp = new ArrayList<>();
+
+        findPath(root, target, res, tmp);
+        return res;
     }
+
+    private static void findPath(TreeNode root, Integer target, List<List<Integer>> res, List<Integer> tmp) {
+        if (root == null) {
+            return;
+        }
+        target = target - root.val;
+        tmp.add(root.val);
+
+        //有可能有负数 所以小于零也不能return！
+//        if(target < 0){
+//            return;
+//        }
+
+        if (target == 0 && root.left == null && root.right == null) {
+            res.add(tmp);
+            return;
+        }
+        //必须new新的tmp  因为左右子树都要用！
+        findPath(root.left, target, res, new ArrayList<>(tmp));
+        findPath(root.right, target, res, new ArrayList<>(tmp));
+    }
+
     public static void main(String[] args) {
 
         TreeNode root=new TreeNode();

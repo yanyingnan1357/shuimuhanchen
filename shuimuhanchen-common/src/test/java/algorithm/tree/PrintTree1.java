@@ -1,9 +1,6 @@
 package algorithm.tree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 层序遍历二叉树
@@ -18,7 +15,7 @@ public class PrintTree1 {
             return list;
         }
         List<Integer> row = new ArrayList<>();
-        Queue<TreeNode> queue = new ArrayDeque<>();//ArrayDeque LinkedList都是接口Queue的实现类
+        Queue<TreeNode> queue = new LinkedList<>();//ArrayDeque LinkedList都是接口Queue的实现类
         queue.add(root);
         int num = 1;//记录当前行还有多少结点需要打印。
         int nextNum = 0;//记录下一层的节点数。

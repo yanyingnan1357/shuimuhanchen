@@ -5,7 +5,7 @@ package algorithm.tree;
  */
 public class IsBalancedTree {
 
-    public boolean IsBalanced_Solution(TreeNode root) {
+    public boolean isBalanced(TreeNode root) {
         return depth(root) != -1;
     }
 

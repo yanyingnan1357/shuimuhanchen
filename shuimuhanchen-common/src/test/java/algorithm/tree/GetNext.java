@@ -7,25 +7,29 @@ package algorithm.tree;
  */
 public class GetNext {
 
-    public TreeNode getNext(TreeNode pNode){
-        if(pNode == null)
+    public TreeNode getNext(TreeNode node){
+        if (node == null || (node.left == null && node.right == null)) {
             return null;
-        if(pNode.next == null && pNode.right == null)//如果pNode是根节点，且无右子树，返回空。
+        }
+        if (node.next == null && node.right == null) {
             return null;
+        }
 
         TreeNode tmp;
-        if(pNode.right != null){//如果该节点有右子树 ，返回右子树最左端结点。
-            tmp = pNode.right;
-            while(tmp.left!=null)
+        if (node.right != null) {//中序遍历，下一步一定找右节点的最左侧节点
+            tmp = node.right;
+            while (tmp.left != null) {
                 tmp = tmp.left;
+            }
             return tmp;
-        }else{                  //该节点无右子树，分两种情况。
-            if(pNode == pNode.next.left){//如果该节点是左孩子，返回它的父节点。
-                return pNode.next;
-            }else{                      //该节点是右孩子，向上找一个左孩子的父节点返回。
-                tmp = pNode.next;
-                while(tmp.next != null){
-                    if(tmp.next.left == tmp){
+        } else {//没有右节点
+            if (node.next.left == node) { //该结点是左子结点
+                return node.next;
+            }
+            if (node.next.right == node) { //该结点是右子结点
+                tmp = node.next;
+                while (tmp.next != null) {
+                    if (tmp.next.left == tmp) {
                         return tmp.next;
                     }
                     tmp = tmp.next;

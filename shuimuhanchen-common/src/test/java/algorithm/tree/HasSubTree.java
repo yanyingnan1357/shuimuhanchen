@@ -7,11 +7,11 @@ package algorithm.tree;
 public class HasSubTree {
 
     public boolean hasSubTree(TreeNode root1, TreeNode root2) {
-        boolean flag = false;
         if (root1 == null || root2 == null) {
-            return flag;
+            return false;
         }
 
+        boolean flag = false;
         if (root1.val == root2.val) {
             flag = isSubTree(root1, root2);
         }
@@ -24,18 +24,18 @@ public class HasSubTree {
         return flag;
     }
 
-    private static boolean isSubTree(TreeNode root1, TreeNode root2) {
+    public boolean isSubTree(TreeNode root1, TreeNode root2) {
         if (root2 == null) {
             return true;
         }
         if (root1 == null) {
             return false;
         }
-        boolean flag = false;
+
         if (root1.val == root2.val) {
-            flag = isSubTree(root1.left, root2.left) && isSubTree(root1.right, root2.right);
+            return isSubTree(root1.left, root2.left) && isSubTree(root1.right, root2.right);
         }
-        return flag;
+        return false;
     }
 
 }
