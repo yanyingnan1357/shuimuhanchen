@@ -124,6 +124,7 @@ public class SysServiceImpl implements SysService {
         sysLog.setId(1L);
         sysLog.setIp("0.0.0.1");
 
+
         //-----es测试-添加索引---------
         Index index = new Index.Builder(sysLog)
                 .index("sys")
@@ -149,6 +150,7 @@ public class SysServiceImpl implements SysService {
                 .addType("log")
                 .build();
 
+
         //-----es测试-搜索---------
         try {
             SearchResult result = jestClient.execute(search);
@@ -158,6 +160,7 @@ public class SysServiceImpl implements SysService {
         }
 
     }
+
 
     //-----kafka测试------发送消息方法
     public void send() {
