@@ -44,4 +44,5 @@ public class ArticleDto implements Serializable {
     private Long articlePictureId;  // ArticlePicture表主键
     private String pictureUrl;      // 文章题图url
 
+
 }
